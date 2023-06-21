@@ -10,10 +10,10 @@
 
     if($nome==null || $email == null || $senha == null || verificarCadastro($email) != null){
         
-        header("Location: registro.php?c=false");
+        header("Location: registrar.php?c=false");
     } else {    
         
-        $usuario = new Usuarios();
+        $usuario = new Usuario();
         
         $usuario->setNome($nome);
         
@@ -22,6 +22,9 @@
         $usuario->setSenha($senha);
 
         $usuario->setId(inserirUsuarios($usuario->getNome(), $usuario->getEmail(), $usuario->getSenha()));
+
+        session_start();
+        $_SESSION['usuarioAtual'] = $usuario;
         
         header('Location: home.php?p=');
     }

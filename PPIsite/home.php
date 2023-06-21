@@ -13,6 +13,7 @@
     <?php
     include_once "BancoDeDados.php";
     include_once "usuario.php";
+    $getUsuarios = listarUsuarios();
     
     session_start();
     

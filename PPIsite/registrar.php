@@ -9,7 +9,7 @@
 
 <body class="container">
     
-<form action="verificarregistro.php" method="post">
+<form action="verificaRegistrar.php" method="post">
         
     <fieldset class="container">
             

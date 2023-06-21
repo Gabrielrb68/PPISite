@@ -7,8 +7,6 @@
 	
     $usuarioAtual = $_SESSION['usuarioAtual'];
 
-	$header = 'Location: home.php?p=';
-
 	if($_POST['nome']==null){
 		
         $nome = $usuario['nome'];
@@ -46,5 +44,5 @@
 
 	alterarUsuarios($_POST['id'], $nome, $email, $senha);
 
-	header($header);
+	header('Location: home.php?p=');
 ?>

@@ -1,6 +1,6 @@
 <?php               
     function conectarBanco(){
-        $con = new PDO("mysql:host=localhost;dbname=banco", "root", "aluno");
+        $con = new PDO("mysql:host=localhost;dbname=bdUsuario", "root", "aluno");
         return $con;
     }
 
@@ -23,6 +23,7 @@
         catch(PDOException $e){
             echo $e->getMessage();
         }
+        return $con->lastInsertId();
     }
 
     function alterarUsuarios($id, $nome, $email, $senha){
@@ -87,8 +88,9 @@
     function getUsuarios($id){
         try{
             $con=conectarBanco();
-            $sql="SELECT * FROM user WHERE id=?";
-            $stm=$con->prepare($sql);
+            $sql="SELECT * FROM usuario WHERE id=?";
+            $stm=$con->prepare($sql)
+            ;
             $stm->bindParam(1, $id);
             $stm->execute();
             $result=$stm->fetch(PDO::FETCH_ASSOC);
@@ -115,7 +117,7 @@
     function login($email, $senha){
         try{
             $con=conectarBanco();
-            $sql="SELECT * FROM user WHERE email LIKE ? AND senha LIKE ?;";
+            $sql="SELECT * FROM usuario WHERE email LIKE ? AND senha LIKE ?;";
             $stm=$con->prepare($sql);
             $stm->bindParam(1, $email);
             $stm->bindParam(2, $senha);

@@ -9,7 +9,7 @@
         header('Location: index.php');
     } else {
        
-        $usuario = new Usuarios();
+        $usuario = new Usuario();
         
         $usuario->setNome($u['nome']);
         
